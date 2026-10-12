@@ -4,14 +4,17 @@ import { mkdir, unlink, writeFile } from "fs/promises";
 import path from "path";
 
 /**
- * Image storage adapter (local filesystem → public/uploads).
+ * Image storage adapter.
  *
- * PRODUCTION NOTE: serverless platforms (Vercel, Netlify, …) have a read-only,
- * ephemeral filesystem, so files written here would be lost or fail to write.
- * Before deploying, swap the bodies of `saveImage` / `deleteImage` for an object
- * store such as S3, Cloudflare R2 or Supabase Storage and return its public URL.
- * The rest of the admin only depends on these two functions.
+ * - Deployed (BLOB_READ_WRITE_TOKEN set, e.g. Vercel Blob connected to the project):
+ *   images are stored in Vercel Blob and served from its public CDN URL.
+ * - Local development: images are written to public/uploads.
+ *
+ * Serverless filesystems are read-only/ephemeral, so the Blob store is required in production.
+ * The rest of the admin only depends on `saveImage` / `deleteImage`.
  */
+const blobEnabled = () => Boolean(process.env.BLOB_READ_WRITE_TOKEN);
+const BLOB_HOST = /^https:\/\/[a-z0-9-]+\.public\.blob\.vercel-storage\.com\//i;
 
 export const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 
@@ -53,6 +56,11 @@ export async function saveImage(file: File): Promise<string> {
   if (!detected) throw new StorageError("The file content is not a valid JPEG, PNG, WebP or AVIF image.");
   // The client-supplied filename is ignored entirely.
   const name = `${randomUUID()}.${ALLOWED[detected]}`;
+  if (blobEnabled()) {
+    const { put } = await import("@vercel/blob");
+    const blob = await put(`products/${name}`, buf, { access: "public", contentType: detected, addRandomSuffix: false });
+    return blob.url;
+  }
   await mkdir(UPLOAD_DIR, { recursive: true });
   await writeFile(path.join(UPLOAD_DIR, name), buf);
   return `${PUBLIC_PREFIX}${name}`;
@@ -60,6 +68,15 @@ export async function saveImage(file: File): Promise<string> {
 
 /** Deletes a previously uploaded image. URLs outside /uploads are ignored (seeded/static assets are never removed). */
 export async function deleteImage(url: string | null | undefined): Promise<void> {
+  if (url && blobEnabled() && BLOB_HOST.test(url)) {
+    try {
+      const { del } = await import("@vercel/blob");
+      await del(url);
+    } catch {
+      // already gone
+    }
+    return;
+  }
   if (!url || !url.startsWith(PUBLIC_PREFIX)) return;
   const name = url.slice(PUBLIC_PREFIX.length);
   if (!/^[A-Za-z0-9-]+\.(jpg|png|webp|avif)$/.test(name)) return;

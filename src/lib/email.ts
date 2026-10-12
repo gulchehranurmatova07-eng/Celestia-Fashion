@@ -31,5 +31,5 @@ export async function sendEmail(to: string, subject: string, body: string) {
 }
 
 export function siteUrl(path = "") {
-  return `${(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "")}${path}`;
+  return `${(process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000")).replace(/\/$/, "")}${path}`;
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DEFAULT_LOCALE, LOCALES, type Locale } from "./constants";
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000")).replace(/\/$/, "");
 
 /** Absolute URL for a path in a locale ("as-needed" prefixing: English has no prefix). */
 export function localizedUrl(path: string, locale: string) {

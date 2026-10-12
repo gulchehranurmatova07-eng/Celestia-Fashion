@@ -97,10 +97,10 @@ export async function listProducts(params: { q?: string; status?: string; demo?:
     ...(q
       ? {
           OR: [
-            { sku: { contains: q } },
-            { slug: { contains: q } },
-            { translations: { some: { name: { contains: q } } } },
-            { variants: { some: { sku: { contains: q } } } },
+            { sku: { contains: q, mode: "insensitive" } },
+            { slug: { contains: q, mode: "insensitive" } },
+            { translations: { some: { name: { contains: q, mode: "insensitive" } } } },
+            { variants: { some: { sku: { contains: q, mode: "insensitive" } } } },
           ],
         }
       : {}),
@@ -232,7 +232,7 @@ export async function listOrders(params: { q?: string; status?: string; page?: s
   const status = ORDER_STATUSES.includes(params.status as (typeof ORDER_STATUSES)[number]) ? params.status : undefined;
   const where: Prisma.OrderWhereInput = {
     ...(status ? { status } : {}),
-    ...(q ? { OR: [{ number: { contains: q } }, { email: { contains: q.toLowerCase() } }, { email: { contains: q } }] } : {}),
+    ...(q ? { OR: [{ number: { contains: q, mode: "insensitive" } }, { email: { contains: q, mode: "insensitive" } }] } : {}),
   };
   const page = pageOf(params.page);
   const [total, rows] = await Promise.all([
@@ -293,7 +293,7 @@ export async function listCustomers(params: { q?: string; admins?: string; page?
   const q = (params.q ?? "").trim().slice(0, 100);
   const where: Prisma.UserWhereInput = {
     ...(params.admins === "1" ? {} : { role: "CUSTOMER" }),
-    ...(q ? { OR: [{ email: { contains: q } }, { name: { contains: q } }, { phone: { contains: q } }] } : {}),
+    ...(q ? { OR: [{ email: { contains: q, mode: "insensitive" } }, { name: { contains: q, mode: "insensitive" } }, { phone: { contains: q, mode: "insensitive" } }] } : {}),
   };
   const page = pageOf(params.page);
   const [total, rows] = await Promise.all([
@@ -346,7 +346,7 @@ export async function listSubscribers(params: { status?: string; q?: string; pag
   const q = (params.q ?? "").trim().slice(0, 100);
   const where: Prisma.NewsletterSubscriberWhereInput = {
     ...(status ? { status } : {}),
-    ...(q ? { email: { contains: q.toLowerCase() } } : {}),
+    ...(q ? { email: { contains: q.toLowerCase(), mode: "insensitive" } } : {}),
   };
   const page = pageOf(params.page);
   const [total, rows] = await Promise.all([

@@ -11,13 +11,16 @@
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
     "db:reset": "prisma db push --force-reset && tsx prisma/seed.ts",
-    "images": "python3 scripts/crop_images.py"
+    "images": "python3 scripts/crop_images.py",
+    "vercel-build": "prisma generate && prisma db push --skip-generate && tsx prisma/seed.ts --if-empty && next build",
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
+    "@vercel/blob": "^2.8.1",
     "bcryptjs": "^3.0.3",
     "clsx": "^2.1.1",
     "next": "^15.5.27",

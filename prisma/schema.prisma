@@ -1,16 +1,16 @@
-// CELESTIA data model.
-// Development uses SQLite (zero setup). For production, change the provider to
-// "postgresql" and set DATABASE_URL to your Postgres / Supabase connection string.
-// String columns are used instead of enums so the schema runs on both engines;
-// allowed values are validated in src/lib/constants.ts.
+// CELESTIA data model (PostgreSQL — e.g. Neon via Vercel, Supabase, or a local server).
+// DATABASE_URL is the (pooled) connection used by the app; DATABASE_URL_UNPOOLED is a
+// direct connection used for schema changes. Locally both can be the same URL.
+// String columns are used instead of enums; allowed values live in src/lib/constants.ts.
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
 model User {

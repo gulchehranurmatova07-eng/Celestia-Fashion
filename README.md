@@ -4,15 +4,29 @@
 
 A full-stack, trilingual (EN / RU / UZ) fashion store: editorial storefront, catalogue with URL-based filters, product pages, cart and checkout with server-side order processing, customer accounts, and a protected admin dashboard.
 
-## Quick start
+## Deploy to Vercel
+
+1. In Vercel, click **Add New → Project** and import this GitHub repository.
+2. Under **Environment Variables**, add `ADMIN_PASSWORD` (your admin password). Optionally add `ADMIN_EMAIL`; the default is `admin@celestia.local`.
+3. Click **Deploy**. The first build will fail because there is no database yet. That's expected.
+4. Open the project's **Storage** tab:
+   - Create a **Neon** (Postgres) database and connect it to the project. This sets `DATABASE_URL` and `DATABASE_URL_UNPOOLED`.
+   - Create a **Blob** store and connect it. This sets `BLOB_READ_WRITE_TOKEN` for admin photo uploads.
+5. Go to **Deployments**, open the menu on the latest deployment and choose **Redeploy**.
+
+Each deploy runs `npm run vercel-build`, which syncs the database schema, creates the admin account, and seeds the demo catalogue **only if the database is empty**. After that, every push to the production branch redeploys automatically.
+
+## Run locally
 
 ```bash
 npm install
-cp .env.example .env          # set ADMIN_PASSWORD before seeding
-npm run db:push               # create the SQLite dev database
+cp .env.example .env          # set DATABASE_URL(_UNPOOLED) and ADMIN_PASSWORD
+npm run db:push               # create tables in your Postgres database
 npm run db:seed               # demo catalogue + admin account
 npm run dev                   # http://localhost:3000
 ```
+
+For local development you need a PostgreSQL database. Either run one locally, or reuse the Neon database: `npx vercel env pull .env` copies its settings from Vercel.
 
 The admin dashboard is at `/admin`. Sign in with `ADMIN_EMAIL` / `ADMIN_PASSWORD` from `.env`.
 
@@ -25,15 +39,11 @@ The admin dashboard is at `/admin`. Sign in with `ADMIN_EMAIL` / `ADMIN_PASSWORD
 | Framework | Next.js 15 (App Router, Server Components, Server Actions), React 19, TypeScript |
 | Styling | Tailwind CSS 3 with brand tokens (`tailwind.config.ts`); Cormorant Garamond + Manrope via `next/font` |
 | i18n | `next-intl` — `/` English (default), `/ru`, `/uz`; messages in `messages/<locale>/<namespace>.json` |
-| Data | Prisma ORM. SQLite in development, PostgreSQL (e.g. Supabase) in production |
+| Data | Prisma ORM with PostgreSQL (Neon via Vercel, Supabase, or local) |
 | Auth | Email + password (bcrypt), opaque session tokens stored hashed in the DB, http-only cookies |
 | Email | Nodemailer over SMTP when configured; otherwise a development outbox (Admin → Outbox) |
 
-**Why not Supabase directly?** No credentials were available. Prisma talks to Supabase's Postgres unchanged, and every part works locally without external services. To use Supabase:
-
-1. Set `provider = "postgresql"` in `prisma/schema.prisma`.
-2. Point `DATABASE_URL` at your Supabase connection string.
-3. Run `npm run db:push && npm run db:seed`.
+**Using Supabase instead of Neon:** point `DATABASE_URL` and `DATABASE_URL_UNPOOLED` at your Supabase connection strings. No code changes are needed.
 
 ## What is real and what needs configuration
 
@@ -44,7 +54,7 @@ The admin dashboard is at `/admin`. Sign in with `ADMIN_EMAIL` / `ADMIN_PASSWORD
 | Cash on delivery | ✅ Enabled by default; a business decision, toggle in Admin → Settings |
 | Click / Payme / Uzum Bank | ⚠️ **Not live.** Adapters exist in `src/lib/payments.ts`, but a provider only appears at checkout once its credentials are in `.env`, it is enabled in Settings, **and** its redirect/callback integration has been built and tested (`ONLINE_INTEGRATION_READY`). Merchant onboarding is required. Card data is never stored by this app. |
 | Email | ⚠️ Without `SMTP_*` variables, emails (order confirmations, password resets, status updates) are **not sent**. They are stored in Admin → Outbox and logged to the console. |
-| Image uploads | ⚠️ Saved to `public/uploads` (`src/lib/storage.ts`). On serverless hosting, swap the adapter for S3 or Supabase Storage. |
+| Image uploads | ✅ Saved to Vercel Blob when `BLOB_READ_WRITE_TOKEN` is set; otherwise saved locally to `public/uploads` |
 | Contact details, legal pages | ⚠️ Placeholders and templates — update in Admin → Settings and have a lawyer review `/privacy` and `/terms`. |
 
 ## Demo content
@@ -94,8 +104,8 @@ prisma/                schema, seed data, seed script
 
 ## Production checklist
 
-1. Switch Prisma to PostgreSQL and set `DATABASE_URL`.
-2. Set `NEXT_PUBLIC_SITE_URL`, a strong `ADMIN_PASSWORD`, and the `SMTP_*` variables.
-3. Replace the upload storage adapter if hosting serverless.
+1. Connect the Neon and Blob stores in Vercel (see Deploy to Vercel above).
+2. Set a strong `ADMIN_PASSWORD`, the `SMTP_*` variables, and `NEXT_PUBLIC_SITE_URL` once you add a custom domain.
+3. Change the admin password after first sign-in if it was shared.
 4. Integrate and test the payment providers you have merchant accounts for, then enable them.
 5. Replace demo products and imagery; update contact details, legal texts and social links in Settings.

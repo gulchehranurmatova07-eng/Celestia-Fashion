@@ -13,7 +13,29 @@ function stockFor(sku: string) {
   return r < 1 ? 0 : r < 3 ? 2 : 4 + (h % 9);
 }
 
+async function ensureAdmin() {
+  const email = (process.env.ADMIN_EMAIL || "admin@celestia.local").toLowerCase();
+  const password = process.env.ADMIN_PASSWORD;
+  if (!password) {
+    console.warn("ADMIN_PASSWORD not set — no administrator account created.");
+    return;
+  }
+  // Creates the admin once; an existing account's password is never overwritten.
+  await db.user.upsert({
+    where: { email },
+    update: { role: "ADMIN" },
+    create: { email, name: "CELESTIA Admin", role: "ADMIN", passwordHash: await bcrypt.hash(password, 12) },
+  });
+  console.log(`Administrator: ${email}`);
+}
+
 async function main() {
+  // `--if-empty` (used on every deploy) only seeds a brand-new database, so real data is never overwritten.
+  if (process.argv.includes("--if-empty") && (await db.product.count()) > 0) {
+    console.log("Database already has products — skipping demo catalogue.");
+    await ensureAdmin();
+    return;
+  }
   console.log("Seeding CELESTIA demo catalogue…");
 
   for (const c of COLORS) await db.color.upsert({ where: { slug: c.slug }, update: c, create: c });
@@ -104,18 +126,7 @@ async function main() {
 
   for (const d of DISCOUNT_CODES) await db.discountCode.upsert({ where: { code: d.code }, update: {}, create: d });
 
-  const email = (process.env.ADMIN_EMAIL || "admin@celestia.local").toLowerCase();
-  const password = process.env.ADMIN_PASSWORD;
-  if (password) {
-    await db.user.upsert({
-      where: { email },
-      update: { role: "ADMIN" },
-      create: { email, name: "CELESTIA Admin", role: "ADMIN", passwordHash: await bcrypt.hash(password, 12) },
-    });
-    console.log(`Administrator: ${email}`);
-  } else {
-    console.warn("ADMIN_PASSWORD not set — no administrator account created.");
-  }
+  await ensureAdmin();
 
   console.log(`Seeded ${PRODUCTS.length} demo products.`);
 }
