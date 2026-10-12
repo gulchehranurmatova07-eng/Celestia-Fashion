@@ -1,0 +1,102 @@
+{
+  "about": {
+    "title": "Bizning tariximiz",
+    "meta": "CELESTIA falsafasi — puxta saralash, abadiy uslub va nafis xarid tajribasi."
+  },
+  "shipping": {
+    "title": "Yetkazib berish va qaytarish",
+    "meta": "Yetkazib berish usullari, muddatlari va 14 kunlik qaytarish siyosatimiz.",
+    "deliveryTitle": "Yetkazib berish",
+    "returnsTitle": "Qaytarish va almashtirish",
+    "table": {
+      "method": "Usul",
+      "time": "Muddat",
+      "cost": "Narx"
+    },
+    "free": "{threshold} dan ortiq buyurtmalarga bepul.",
+    "returns1": "Asl yorliqlari saqlangan, kiyilmagan buyumlarni yetkazib berilgan kundan boshlab 14 kun ichida qaytarish mumkin.",
+    "returns2": "Qaytarishni boshlash uchun buyurtma raqamingiz bilan mijozlarga xizmat ko‘rsatish jamoamizga murojaat qiling. Biz buyumni olib ketishni tashkil qilamiz yoki uni qayerga topshirish mumkinligini maslahat beramiz.",
+    "returns3": "Buyum tekshirilgach, pul asl to‘lov usuliga qaytariladi. Yetkazib berilganda naqd to‘langan buyurtmalar uchun pul bank o‘tkazmasi orqali yoki butikda qaytariladi.",
+    "returns4": "Buyurtma asosida tayyorlangan buyumlar, masalan, shaxsiylashtirilgan zargarlik buyumlari, nuqsonli bo‘lgan holatlardan tashqari qaytarilmaydi."
+  },
+  "sizeGuide": {
+    "title": "O‘lchamlar jadvali",
+    "meta": "Kostyumlar, ko‘ylaklar, shimlar va poyabzal uchun CELESTIA o‘lchamingizni toping.",
+    "tops": "Ko‘ylaklar, trikotaj va kurtkalar",
+    "tailoring": "Pidjaklar va kostyumlar",
+    "trousers": "Shimlar va denim",
+    "shoes": "Poyabzal"
+  },
+  "contact": {
+    "title": "Biz bilan bog‘lanish",
+    "meta": "CELESTIA mijozlarga xizmat ko‘rsatish jamoasi bilan bog‘laning.",
+    "intro": "Mijozlarga xizmat ko‘rsatish jamoamiz buyurtmalar, o‘lcham tanlash va uslub bo‘yicha maslahatlar bilan yordam berishga tayyor.",
+    "email": "Elektron pochta",
+    "phone": "Telefon",
+    "address": "Manzil",
+    "hours": "Ish vaqti",
+    "placeholderNotice": "Ko‘rsatilgan aloqa ma’lumotlari namoyish do‘koni uchun shartli bo‘lib, ularni administrator panelidagi sozlamalarda o‘zgartirish mumkin."
+  },
+  "privacy": {
+    "title": "Maxfiylik siyosati",
+    "meta": "CELESTIA shaxsiy ma’lumotlaringizni qanday to‘plashi, ishlatishi va himoya qilishi haqida.",
+    "sections": [
+      {
+        "h": "Biz kimmiz",
+        "p": "Ushbu onlayn do‘konni CELESTIA boshqaradi. Mazkur siyosat saytni ko‘zdan kechirganingizda, hisob yaratganingizda, obuna bo‘lganingizda yoki buyurtma berganingizda qanday shaxsiy ma’lumotlarni to‘plashimiz va ulardan qanday foydalanishimizni tushuntiradi."
+      },
+      {
+        "h": "Qanday ma’lumotlarni to‘playmiz",
+        "p": "Aloqa ma’lumotlari (ism, elektron pochta, telefon), yetkazib berish manzillari, buyurtmalar tarixi, afzal ko‘rgan tilingiz hamda obuna bo‘lsangiz — axborotnoma olishga roziligingiz. Biz bank kartalari raqamlari va xavfsizlik kodlarini to‘plamaymiz va saqlamaymiz — har qanday onlayn to‘lov to‘lov provayderi tomonidan amalga oshiriladi."
+      },
+      {
+        "h": "Ma’lumotlaringizdan qanday foydalanamiz",
+        "p": "Buyurtmalarni qayta ishlash va yetkazib berish, mijozlarga xizmat ko‘rsatish, hisobingiz xavfsizligini ta’minlash hamda — faqat roziligingiz bilan — axborotnoma yuborish uchun. Biz shaxsiy ma’lumotlarni sotmaymiz."
+      },
+      {
+        "h": "Cookie fayllari va mahalliy xotira",
+        "p": "Tizimda qolishingiz uchun qat’iy zarur bo‘lgan seans cookie faylidan, tanlangan tilni eslab qolish uchun cookie faylidan hamda savatingiz va mehmon sevimlilar ro‘yxatini saqlash uchun brauzeringizning mahalliy xotirasidan foydalanamiz."
+      },
+      {
+        "h": "Sizning huquqlaringiz",
+        "p": "Siz shaxsiy kabinetingizda ma’lumotlaringizni ko‘rishingiz va yangilashingiz, istalgan vaqtda xatlardan obunani bekor qilishingiz hamda mijozlarga xizmat ko‘rsatish jamoasiga murojaat qilib, ma’lumotlaringizni eksport qilish yoki o‘chirishni so‘rashingiz mumkin."
+      },
+      {
+        "h": "Saqlash va xavfsizlik",
+        "p": "Buyurtmalar haqidagi yozuvlarni qonunchilikda belgilangan muddat davomida saqlaymiz va hisoblarni xeshlangan parollar hamda xavfsiz, http-only seans cookie fayllari yordamida himoya qilamiz."
+      }
+    ]
+  },
+  "terms": {
+    "title": "Foydalanish shartlari",
+    "meta": "CELESTIA’dan xarid qilishda amal qiladigan shartlar.",
+    "sections": [
+      {
+        "h": "Buyurtma berish",
+        "p": "Buyurtma — bu xarid qilish uchun so‘rov. Mahsulot mavjudligi va yetkazib berish ma’lumotlari tekshirilgach, biz uni telefon yoki elektron pochta orqali tasdiqlaymiz. Biz buyurtmani rad etishimiz mumkin, masalan, mahsulot mavjud bo‘lmasa."
+      },
+      {
+        "h": "Narxlar",
+        "p": "Narxlar o‘zbek so‘mida ko‘rsatilgan va amaldagi soliqlarni o‘z ichiga oladi. Yetkazib berish narxi buyurtma berishdan oldin ko‘rsatiladi."
+      },
+      {
+        "h": "To‘lov",
+        "p": "Mavjud to‘lov usullari rasmiylashtirish sahifasida ko‘rsatiladi. Yetkazib berilganda naqd to‘lov qabul qilish paytida kuryerga to‘lanadi. Onlayn to‘lov usullari faqat to‘liq integratsiya qilinib, sinovdan o‘tkazilgandan keyin taklif etiladi."
+      },
+      {
+        "h": "Yetkazib berish",
+        "p": "Yetkazib berish muddatlari taxminiydir. Tasodifiy yo‘qolish yoki shikastlanish xavfi yetkazib berilgan paytdan boshlab sizga o‘tadi. Iltimos, posilkani qabul qilishda ko‘zdan kechiring."
+      },
+      {
+        "h": "Qaytarish",
+        "p": "Asl yorliqlari saqlangan, kiyilmagan buyumlarni yetkazib berish va qaytarish siyosatimiz hamda iste’molchilar huquqlarini himoya qilish to‘g‘risidagi amaldagi qonunchilikka muvofiq yetkazib berilgan kundan boshlab 14 kun ichida qaytarish mumkin."
+      },
+      {
+        "h": "Javobgarlik",
+        "p": "Ushbu shartlardagi hech bir qoida iste’molchi sifatidagi qonuniy huquqlaringizni cheklamaydi."
+      }
+    ]
+  },
+  "legalDraft": "Ushbu hujjat namoyish do‘koni uchun shablon bo‘lib, ishga tushirishdan oldin yurist tomonidan ko‘rib chiqilishi shart.",
+  "updated": "So‘nggi yangilanish: {date}"
+}

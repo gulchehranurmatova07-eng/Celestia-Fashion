@@ -1,0 +1,102 @@
+{
+  "about": {
+    "title": "Our story",
+    "meta": "The philosophy behind CELESTIA — thoughtful curation, timeless style and a refined shopping experience."
+  },
+  "shipping": {
+    "title": "Shipping & returns",
+    "meta": "Delivery options, timings and our 14-day returns policy.",
+    "deliveryTitle": "Delivery",
+    "returnsTitle": "Returns & exchanges",
+    "table": {
+      "method": "Method",
+      "time": "Timing",
+      "cost": "Cost"
+    },
+    "free": "Complimentary on orders over {threshold}.",
+    "returns1": "Unworn items with original tags may be returned within 14 days of delivery.",
+    "returns2": "To start a return, contact our client care team with your order number. We will arrange collection or advise on drop-off.",
+    "returns3": "Refunds are issued to the original payment method once the item has been inspected. Cash on delivery orders are refunded by bank transfer or in-store.",
+    "returns4": "Made-to-order items, such as personalised jewellery, cannot be returned unless faulty."
+  },
+  "sizeGuide": {
+    "title": "Size guide",
+    "meta": "Find your CELESTIA size for tailoring, shirts, trousers and shoes.",
+    "tops": "Shirts, knitwear & jackets",
+    "tailoring": "Blazers & tailoring",
+    "trousers": "Trousers & denim",
+    "shoes": "Shoes"
+  },
+  "contact": {
+    "title": "Contact us",
+    "meta": "Reach the CELESTIA client care team.",
+    "intro": "Our client care team is here to help with orders, sizing and styling advice.",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "hours": "Hours",
+    "placeholderNotice": "Contact details shown are placeholders for this demonstration store and can be updated in the admin settings."
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "meta": "How CELESTIA collects, uses and protects your personal data.",
+    "sections": [
+      {
+        "h": "Who we are",
+        "p": "CELESTIA operates this online store. This policy explains what personal data we collect when you browse, create an account, subscribe or place an order, and how we use it."
+      },
+      {
+        "h": "What we collect",
+        "p": "Contact details (name, email, phone), delivery addresses, order history, your language preference and, if you subscribe, your newsletter consent. We do not collect or store payment card numbers or security codes — any online payment is handled by the payment provider."
+      },
+      {
+        "h": "How we use your data",
+        "p": "To process and deliver orders, provide customer care, keep your account secure, and — only with your consent — send newsletters. We do not sell personal data."
+      },
+      {
+        "h": "Cookies & local storage",
+        "p": "We use a strictly necessary session cookie to keep you signed in, a cookie to remember your language, and your browser’s local storage to keep your bag and guest wishlist."
+      },
+      {
+        "h": "Your rights",
+        "p": "You can view and update your details in your account, unsubscribe from emails at any time, and ask us to export or delete your data by contacting client care."
+      },
+      {
+        "h": "Retention & security",
+        "p": "We keep order records for as long as required by law and protect accounts with hashed passwords and secure, http-only session cookies."
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms & conditions",
+    "meta": "Terms that apply to purchases from CELESTIA.",
+    "sections": [
+      {
+        "h": "Ordering",
+        "p": "An order is a request to purchase. We confirm it by phone or email once stock and delivery details are verified. We may decline orders, for example if an item is unavailable."
+      },
+      {
+        "h": "Prices",
+        "p": "Prices are shown in Uzbek soʻm and include applicable taxes. Delivery charges are shown before you place your order."
+      },
+      {
+        "h": "Payment",
+        "p": "Available payment methods are shown at checkout. Cash on delivery is paid to the courier on receipt. Online payment methods are offered only once they have been fully integrated and tested."
+      },
+      {
+        "h": "Delivery",
+        "p": "Delivery timings are estimates. Risk passes to you on delivery. Please inspect your parcel on receipt."
+      },
+      {
+        "h": "Returns",
+        "p": "Unworn items with original tags may be returned within 14 days of delivery, in line with our shipping & returns policy and applicable consumer law."
+      },
+      {
+        "h": "Liability",
+        "p": "Nothing in these terms limits your statutory rights as a consumer."
+      }
+    ]
+  },
+  "legalDraft": "This document is a template for the demonstration store and must be reviewed by a legal professional before launch.",
+  "updated": "Last updated: {date}"
+}

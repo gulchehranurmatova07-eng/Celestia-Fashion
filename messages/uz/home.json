@@ -1,0 +1,58 @@
+{
+  "hero": {
+    "eyebrow": "Kuz / Qish 2026",
+    "explore": "To‘plamni kashf eting",
+    "newArrivals": "Yangi kelganlarni ko‘ring"
+  },
+  "categories": {
+    "eyebrow": "Toifalar bo‘yicha",
+    "title": "Garderob",
+    "men": "Erkaklar",
+    "tailoring": "Kostyumlar",
+    "clothing": "Kiyimlar",
+    "shoes": "Poyabzal",
+    "accessories": "Aksessuarlar",
+    "newArrivals": "Yangi kelganlar",
+    "knitwear": "Trikotaj",
+    "explore": "Ko‘rish"
+  },
+  "newArrivals": {
+    "eyebrow": "Endigina keldi",
+    "title": "Yangi kelganlar",
+    "viewAll": "Barcha yangi kelganlarni ko‘rish"
+  },
+  "editorial": {
+    "eyebrow": "Tahririyat tanlovi",
+    "title": "O‘ziga xoslik ifodasi.",
+    "text": "Sifat, nozik detallar va abadiy dizaynni qadrlaydiganlar uchun e’tibor bilan saralangan buyumlar.",
+    "cta": "To‘plamni kashf eting"
+  },
+  "trending": {
+    "eyebrow": "Eng talabgir",
+    "title": "Hozir trendda",
+    "prev": "Oldingi mahsulotlar",
+    "next": "Keyingi mahsulotlar"
+  },
+  "collections": {
+    "eyebrow": "Saralangan",
+    "title": "To‘plamlar",
+    "pieces": "{count, plural, one {# ta buyum} other {# ta buyum}}",
+    "discover": "Kashf etish"
+  },
+  "story": {
+    "eyebrow": "CELESTIA brendi",
+    "title": "Moda — shaxsiy tanlov.",
+    "p1": "CELESTIA oddiy bir ishonchdan boshlangan: siz tanlagan kiyim shubhasiz sizniki ekanini his qildirishi kerak. Biz cheksiz katalog o‘rniga puxta saralangan garderobni taklif etamiz — aniq shakldagi kostyumlar, mayin trikotaj va maqsadli aksessuarlar.",
+    "p2": "Har bir buyum mato sifati, bichimi va bir mavsumdan ortiq xizmat qila olishiga qarab tanlanadi. Biz tabiiy tolalar, halol tikuv va bir-biri bilan uyg‘unlashadigan ranglarni afzal ko‘ramiz — shunda garderobingiz yillar davomida siz bilan birga o‘sib boradi.",
+    "p3": "Taassurot kiyimning o‘zi kabi muhim bo‘lgani uchun biz birinchi bosishdan to buyurtmangiz qo‘lingizga yetguncha e’tiborli xizmat ko‘rsatamiz.",
+    "cta": "Tariximizni o‘qing",
+    "values": {
+      "curation": "Puxta saralash",
+      "curationText": "Cheksiz lenta emas, balki aniq tanlov.",
+      "quality": "Sifat birinchi o‘rinda",
+      "qualityText": "Tabiiy tolalar va halol tikuv.",
+      "service": "Nafis xizmat",
+      "serviceText": "Buyurtmadan yetkazib berishgacha shaxsiy e’tibor."
+    }
+  }
+}

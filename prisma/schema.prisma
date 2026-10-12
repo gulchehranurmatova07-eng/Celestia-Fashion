@@ -1,0 +1,313 @@
+// CELESTIA data model.
+// Development uses SQLite (zero setup). For production, change the provider to
+// "postgresql" and set DATABASE_URL to your Postgres / Supabase connection string.
+// String columns are used instead of enums so the schema runs on both engines;
+// allowed values are validated in src/lib/constants.ts.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  phone        String?
+  role         String    @default("CUSTOMER") // CUSTOMER | ADMIN
+  locale       String    @default("en")
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  sessions     Session[]
+  addresses    Address[]
+  orders       Order[]
+  wishlist     WishlistItem[]
+  resetTokens  PasswordResetToken[]
+}
+
+model Session {
+  id        String   @id // SHA-256 of the cookie token
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model PasswordResetToken {
+  id        String    @id // SHA-256 of the emailed token
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+}
+
+model Address {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fullName   String
+  phone      String
+  country    String   @default("UZ")
+  region     String
+  city       String
+  line1      String
+  line2      String?
+  postalCode String?
+  isDefault  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Category {
+  id           String                @id @default(cuid())
+  slug         String                @unique
+  parentId     String?
+  parent       Category?             @relation("CategoryTree", fields: [parentId], references: [id])
+  children     Category[]            @relation("CategoryTree")
+  image        String?
+  sortOrder    Int                   @default(0)
+  translations CategoryTranslation[]
+  products     Product[]
+}
+
+model CategoryTranslation {
+  id         String   @id @default(cuid())
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  locale     String
+  name       String
+
+  @@unique([categoryId, locale])
+}
+
+model Brand {
+  id       String    @id @default(cuid())
+  slug     String    @unique
+  name     String
+  products Product[]
+}
+
+model Collection {
+  id           String                  @id @default(cuid())
+  slug         String                  @unique
+  image        String?
+  sortOrder    Int                     @default(0)
+  active       Boolean                 @default(true)
+  translations CollectionTranslation[]
+  products     Product[]
+}
+
+model CollectionTranslation {
+  id           String     @id @default(cuid())
+  collectionId String
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  locale       String
+  name         String
+  description  String     @default("")
+
+  @@unique([collectionId, locale])
+}
+
+model Color {
+  id       String           @id @default(cuid())
+  slug     String           @unique
+  hex      String
+  nameEn   String
+  nameRu   String
+  nameUz   String
+  variants ProductVariant[]
+  images   ProductImage[]
+}
+
+model Product {
+  id             String               @id @default(cuid())
+  slug           String               @unique
+  sku            String               @unique
+  status         String               @default("ACTIVE") // ACTIVE | DRAFT | ARCHIVED
+  gender         String               @default("MEN") // MEN | WOMEN | UNISEX
+  price          Int // minor-unit free amount in store currency (UZS)
+  compareAtPrice Int? // original price when on sale
+  isNew          Boolean              @default(false)
+  trending       Boolean              @default(false)
+  isDemo         Boolean              @default(false)
+  sortWeight     Int                  @default(0) // "Recommended" ordering, set by admins
+  salesCount     Int                  @default(0) // incremented by real orders only
+  sizeChart      String               @default("tops") // tops | tailoring | trousers | shoes | none
+  categoryId     String
+  category       Category             @relation(fields: [categoryId], references: [id])
+  brandId        String
+  brand          Brand                @relation(fields: [brandId], references: [id])
+  collections    Collection[]
+  translations   ProductTranslation[]
+  images         ProductImage[]
+  variants       ProductVariant[]
+  wishlistItems  WishlistItem[]
+  orderItems     OrderItem[]
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+
+  @@index([status, categoryId])
+}
+
+model ProductTranslation {
+  id          String  @id @default(cuid())
+  productId   String
+  product     Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  locale      String
+  name        String
+  description String
+  materials   String  @default("")
+  care        String  @default("")
+
+  @@unique([productId, locale])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  alt       String  @default("")
+  colorId   String?
+  color     Color?  @relation(fields: [colorId], references: [id], onDelete: SetNull)
+  sortOrder Int     @default(0)
+
+  @@index([productId])
+}
+
+model ProductVariant {
+  id         String      @id @default(cuid())
+  productId  String
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  colorId    String
+  color      Color       @relation(fields: [colorId], references: [id])
+  size       String
+  sku        String      @unique
+  stock      Int         @default(0)
+  sortOrder  Int         @default(0)
+  orderItems OrderItem[]
+
+  @@unique([productId, colorId, size])
+}
+
+model WishlistItem {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+}
+
+model DiscountCode {
+  id          String    @id @default(cuid())
+  code        String    @unique
+  type        String // PERCENT | FIXED
+  value       Int
+  minSubtotal Int       @default(0)
+  maxUses     Int?
+  usedCount   Int       @default(0)
+  startsAt    DateTime?
+  endsAt      DateTime?
+  active      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+}
+
+model Order {
+  id             String      @id @default(cuid())
+  number         String      @unique
+  accessToken    String      @unique // lets guests view their own confirmation
+  userId         String?
+  user           User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  email          String
+  phone          String
+  fullName       String
+  country        String
+  region         String
+  city           String
+  line1          String
+  line2          String?
+  postalCode     String?
+  deliveryMethod String
+  paymentMethod  String
+  status         String      @default("PENDING") // PENDING | CONFIRMED | PROCESSING | SHIPPED | DELIVERED | CANCELLED
+  paymentStatus  String      @default("UNPAID") // UNPAID | PAID | REFUNDED
+  subtotal       Int
+  discount       Int         @default(0)
+  shipping       Int         @default(0)
+  total          Int
+  discountCode   String?
+  notes          String?
+  locale         String      @default("en")
+  items          OrderItem[]
+  payments       Payment[]
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  @@index([userId])
+}
+
+model OrderItem {
+  id        String          @id @default(cuid())
+  orderId   String
+  order     Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String?
+  product   Product?        @relation(fields: [productId], references: [id], onDelete: SetNull)
+  variantId String?
+  variant   ProductVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+  name      String
+  colorName String
+  size      String
+  sku       String
+  image     String?
+  unitPrice Int
+  quantity  Int
+}
+
+model Payment {
+  id         String   @id @default(cuid())
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  provider   String // COD | CLICK | PAYME | UZUM
+  status     String // PENDING | SUCCEEDED | FAILED | REFUNDED
+  amount     Int
+  externalId String?
+  createdAt  DateTime @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  locale    String   @default("en")
+  consent   Boolean
+  status    String   @default("SUBSCRIBED") // SUBSCRIBED | UNSUBSCRIBED
+  source    String   @default("site")
+  createdAt DateTime @default(now())
+}
+
+model Setting {
+  key       String   @id
+  value     String // JSON
+  updatedAt DateTime @updatedAt
+}
+
+model EmailOutbox {
+  id        String   @id @default(cuid())
+  to        String
+  subject   String
+  body      String
+  delivered Boolean  @default(false) // true only when an SMTP server accepted it
+  error     String?
+  createdAt DateTime @default(now())
+}

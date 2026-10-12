@@ -1,0 +1,58 @@
+{
+  "hero": {
+    "eyebrow": "Autumn / Winter 2026",
+    "explore": "Explore Collection",
+    "newArrivals": "Discover New Arrivals"
+  },
+  "categories": {
+    "eyebrow": "Shop by category",
+    "title": "The Wardrobe",
+    "men": "Men",
+    "tailoring": "Tailoring",
+    "clothing": "Clothing",
+    "shoes": "Shoes",
+    "accessories": "Accessories",
+    "newArrivals": "New Arrivals",
+    "knitwear": "Knitwear",
+    "explore": "Explore"
+  },
+  "newArrivals": {
+    "eyebrow": "Just in",
+    "title": "New Arrivals",
+    "viewAll": "View all new arrivals"
+  },
+  "editorial": {
+    "eyebrow": "The Edit",
+    "title": "An Expression of Individuality.",
+    "text": "Thoughtfully selected pieces for those who appreciate quality, detail, and timeless design.",
+    "cta": "Explore the Collection"
+  },
+  "trending": {
+    "eyebrow": "Most wanted",
+    "title": "Trending Now",
+    "prev": "Previous products",
+    "next": "Next products"
+  },
+  "collections": {
+    "eyebrow": "Curated",
+    "title": "Collections",
+    "pieces": "{count, plural, one {# piece} other {# pieces}}",
+    "discover": "Discover"
+  },
+  "story": {
+    "eyebrow": "The house of CELESTIA",
+    "title": "Fashion Is Personal.",
+    "p1": "CELESTIA began with a simple belief: the clothes you choose should feel unmistakably yours. We curate a focused wardrobe — tailoring with structure, knitwear with softness, accessories with purpose — rather than an endless catalogue.",
+    "p2": "Every piece is chosen for its cloth, its cut and its ability to last beyond a single season. We favour natural fibres, honest construction and colours that work together, so a wardrobe can grow with you over years.",
+    "p3": "And because the experience matters as much as the garment, we offer considered service from the first click to the moment your parcel arrives.",
+    "cta": "Read our story",
+    "values": {
+      "curation": "Thoughtful curation",
+      "curationText": "A focused edit, never an endless feed.",
+      "quality": "Quality first",
+      "qualityText": "Natural fibres and honest construction.",
+      "service": "Refined service",
+      "serviceText": "Personal care from order to delivery."
+    }
+  }
+}

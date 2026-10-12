@@ -1,0 +1,58 @@
+{
+  "title": "Katalog",
+  "allProducts": "Barcha mahsulotlar",
+  "metaDescription": "CELESTIA katalogi — kostyumlar, trikotaj, ko‘ylaklar, shimlar, poyabzal va aksessuarlar.",
+  "count": "{count, plural, =0 {Mahsulot yo‘q} one {# ta mahsulot} other {# ta mahsulot}}",
+  "filters": "Filtrlar",
+  "showFilters": "Filtrlarni ko‘rsatish",
+  "hideFilters": "Filtrlarni yashirish",
+  "showResults": "{count, plural, =0 {Natijalarni ko‘rsatish} one {# ta natijani ko‘rsatish} other {# ta natijani ko‘rsatish}}",
+  "clearAll": "Hammasini tozalash",
+  "activeFilters": "Faol filtrlar",
+  "removeFilter": "Filtrni olib tashlash: {label}",
+  "sort": "Saralash",
+  "sorts": {
+    "recommended": "Tavsiya etilgan",
+    "newest": "Avval yangilari",
+    "price-asc": "Narx: arzonidan qimmatiga",
+    "price-desc": "Narx: qimmatidan arzoniga",
+    "popular": "Eng ommabop"
+  },
+  "groups": {
+    "gender": "Kim uchun",
+    "category": "Toifa",
+    "brand": "Liniya",
+    "size": "O‘lcham",
+    "color": "Rang",
+    "price": "Narx",
+    "availability": "Mavjudlik",
+    "offers": "Takliflar"
+  },
+  "gender": { "men": "Erkaklar", "women": "Ayollar", "unisex": "Uniseks" },
+  "inStockOnly": "Faqat mavjudlari",
+  "saleOnly": "Chegirmalar",
+  "newOnly": "Yangi kelganlar",
+  "priceMin": "Dan",
+  "priceMax": "Gacha",
+  "priceApply": "Narxni qo‘llash",
+  "searchWithin": "Natijalar ichida qidirish",
+  "searchResultsFor": "“{q}” bo‘yicha natijalar",
+  "empty": {
+    "title": "Ushbu filtrlar bo‘yicha hech narsa topilmadi",
+    "text": "Filtrlardan birini olib tashlang yoki qidiruvni kengaytiring.",
+    "reset": "Filtrlarni tiklash"
+  },
+  "womenNotice": {
+    "title": "Ayollar to‘plami tez orada",
+    "text": "Ilk ayollar to‘plamimiz tayyorlanmoqda. Hozircha quyida uniseks aksessuarlar, denim va asosiy kiyimlarimizni ko‘zdan kechiring — yoki birinchilardan bo‘lib xabardor bo‘lish uchun obuna bo‘ling."
+  },
+  "loadMore": "Yana yuklash",
+  "showing": "{total} tadan {shown} tasi ko‘rsatilmoqda",
+  "collectionTitle": "To‘plam",
+  "search": {
+    "title": "Qidiruv",
+    "placeholder": "Nima izlayapsiz?",
+    "submit": "Qidirish",
+    "prompt": "Mahsulot nomi, toifa, rang yoki material bo‘yicha qidiring."
+  }
+}

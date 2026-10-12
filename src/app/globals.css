@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --header-h: 64px;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-white font-sans text-[15px] text-ink antialiased;
+  }
+  ::selection {
+    @apply bg-obsidian text-ivory;
+  }
+  :focus-visible {
+    outline: 1px solid #111111;
+    outline-offset: 3px;
+  }
+  .on-dark :focus-visible {
+    outline-color: #f5f1ea;
+  }
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+@layer components {
+  .container-luxe {
+    @apply mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-10;
+  }
+  .eyebrow {
+    @apply text-2xs font-medium uppercase tracking-wide2;
+  }
+  .heading-display {
+    @apply font-serif font-light leading-[1.02] tracking-[-0.01em];
+  }
+  .btn {
+    @apply inline-flex h-12 items-center justify-center gap-2 px-8 text-2xs font-medium uppercase tracking-wide2 transition-colors duration-300 ease-luxe disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-dark {
+    @apply btn bg-obsidian text-ivory hover:bg-[#2a2a2a];
+  }
+  .btn-light {
+    @apply btn bg-ivory text-obsidian hover:bg-white;
+  }
+  .btn-outline {
+    @apply btn border border-obsidian text-obsidian hover:bg-obsidian hover:text-ivory;
+  }
+  .btn-outline-light {
+    @apply btn border border-ivory/70 text-ivory hover:bg-ivory hover:text-obsidian;
+  }
+  .link-underline {
+    @apply relative inline-block after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-current after:transition-transform after:duration-500 after:ease-luxe hover:after:origin-left hover:after:scale-x-100;
+  }
+  .field {
+    @apply h-12 w-full border border-line bg-white px-4 text-sm text-ink placeholder:text-ink-faint transition-colors focus:border-obsidian focus:outline-none;
+  }
+  .field-label {
+    @apply mb-2 block text-2xs font-medium uppercase tracking-wide2 text-ink-soft;
+  }
+  .field-error {
+    @apply mt-1.5 text-xs text-[#9B1C1C];
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Scroll reveal: elements start hidden only once JS has marked the document. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: none; }
+}
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: none; }
+}
+@keyframes slide-in-top {
+  from { transform: translateY(-24px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}

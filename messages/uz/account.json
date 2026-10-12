@@ -1,0 +1,124 @@
+{
+  "title": "Shaxsiy kabinet",
+  "welcome": "Xush kelibsiz, {name}",
+  "nav": {
+    "overview": "Umumiy ko‘rinish",
+    "profile": "Profil",
+    "orders": "Buyurtmalar",
+    "addresses": "Manzillar",
+    "wishlist": "Sevimlilar",
+    "signOut": "Chiqish"
+  },
+  "login": {
+    "title": "Kirish",
+    "subtitle": "Buyurtmalaringiz, manzillaringiz va sevimlilaringiz — bir joyda.",
+    "email": "Elektron pochta",
+    "password": "Parol",
+    "submit": "Kirish",
+    "forgot": "Parolni unutdingizmi?",
+    "noAccount": "CELESTIA’da birinchi marta?",
+    "create": "Hisob yaratish",
+    "invalid": "Elektron pochta yoki parol noto‘g‘ri."
+  },
+  "register": {
+    "title": "Hisob yaratish",
+    "subtitle": "Buyurtmalarni kuzating, manzillar va sevimlilarni barcha qurilmalarda saqlang.",
+    "name": "Ism va familiya",
+    "email": "Elektron pochta",
+    "phone": "Telefon (ixtiyoriy)",
+    "password": "Parol",
+    "passwordHint": "Kamida 8 ta belgi.",
+    "confirm": "Parolni tasdiqlang",
+    "submit": "Hisob yaratish",
+    "haveAccount": "Hisobingiz bormi?",
+    "signIn": "Kirish",
+    "exists": "Bu elektron pochta bilan hisob allaqachon mavjud.",
+    "mismatch": "Parollar mos kelmadi.",
+    "weak": "Parol kamida 8 ta belgidan iborat bo‘lishi kerak.",
+    "newsletter": "CELESTIA yangiliklariga obuna bo‘lish"
+  },
+  "forgot": {
+    "title": "Parolni tiklash",
+    "subtitle": "Elektron pochtangizni kiriting — biz yangi parol o‘rnatish uchun havola yuboramiz.",
+    "submit": "Havolani yuborish",
+    "sent": "Agar bu elektron pochta bilan hisob mavjud bo‘lsa, unga parolni tiklash havolasi yuborildi. Havola bir soat davomida amal qiladi.",
+    "devNote": "Ishlab chiqish rejimi: xatlar yuborilmaydi. Havola administrator panelidagi chiquvchi xatlar papkasida saqlanadi va server jurnaliga chiqariladi.",
+    "back": "Kirish sahifasiga qaytish"
+  },
+  "reset": {
+    "title": "Yangi parol o‘rnating",
+    "password": "Yangi parol",
+    "confirm": "Yangi parolni tasdiqlang",
+    "submit": "Parolni yangilash",
+    "invalid": "Parolni tiklash havolasi yaroqsiz yoki muddati o‘tgan.",
+    "success": "Parolingiz yangilandi. Endi tizimga kirishingiz mumkin."
+  },
+  "profile": {
+    "title": "Profil",
+    "name": "Ism va familiya",
+    "email": "Elektron pochta",
+    "phone": "Telefon",
+    "language": "Afzal til",
+    "save": "O‘zgarishlarni saqlash",
+    "saved": "Profilingiz yangilandi.",
+    "passwordTitle": "Parolni o‘zgartirish",
+    "currentPassword": "Joriy parol",
+    "newPassword": "Yangi parol",
+    "updatePassword": "Parolni yangilash",
+    "passwordUpdated": "Parolingiz o‘zgartirildi.",
+    "wrongPassword": "Joriy parol noto‘g‘ri.",
+    "emailTaken": "Bu elektron pochta boshqa hisobda ishlatilmoqda."
+  },
+  "orders": {
+    "title": "Buyurtmalar tarixi",
+    "empty": "Siz hali birorta ham buyurtma bermagansiz.",
+    "number": "Buyurtma",
+    "date": "Sana",
+    "status": "Holat",
+    "total": "Summa",
+    "items": "{count, plural, one {# ta mahsulot} other {# ta mahsulot}}",
+    "view": "Buyurtmani ko‘rish",
+    "back": "Barcha buyurtmalar",
+    "placedOn": "Berilgan sana: {date}",
+    "payment": "To‘lov",
+    "paymentStatus": "To‘lov holati",
+    "delivery": "Yetkazib berish",
+    "address": "Yetkazib berish manzili",
+    "summary": "Xulosa"
+  },
+  "status": {
+    "PENDING": "Qabul qilindi",
+    "CONFIRMED": "Tasdiqlandi",
+    "PROCESSING": "Tayyorlanmoqda",
+    "SHIPPED": "Jo‘natildi",
+    "DELIVERED": "Yetkazib berildi",
+    "CANCELLED": "Bekor qilindi",
+    "UNPAID": "To‘lov kutilmoqda",
+    "PAID": "To‘langan",
+    "REFUNDED": "Pul qaytarildi"
+  },
+  "addresses": {
+    "title": "Saqlangan manzillar",
+    "empty": "Sizda saqlangan manzillar yo‘q.",
+    "add": "Manzil qo‘shish",
+    "edit": "Manzilni tahrirlash",
+    "default": "Asosiy",
+    "makeDefault": "Asosiy qilib belgilash",
+    "delete": "O‘chirish",
+    "deleteConfirm": "Ushbu manzil o‘chirilsinmi?",
+    "saved": "Manzil saqlandi.",
+    "deleted": "Manzil o‘chirildi."
+  },
+  "wishlist": {
+    "title": "Sevimlilar",
+    "empty": "Sevimlilar ro‘yxatingiz bo‘sh.",
+    "emptyText": "Yoqqan buyumlarni yurakcha belgisini bosib saqlang.",
+    "guestNote": "Sevimlilar ro‘yxatingiz ushbu qurilmada saqlangan. Uni barcha qurilmalarda saqlash uchun tizimga kiring.",
+    "count": "{count, plural, one {# ta saqlangan buyum} other {# ta saqlangan buyum}}"
+  },
+  "overview": {
+    "recentOrders": "So‘nggi buyurtmalar",
+    "details": "Hisob ma’lumotlari",
+    "viewAll": "Barchasini ko‘rish"
+  }
+}
